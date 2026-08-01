@@ -1,4 +1,4 @@
-import { capitalize, reverse, revPerform, calc, caesarCipher, analyzeArray } from "./index.js";
+import { capitalize, reverse, revPerform, calc, encryptCaesarCipher, decryptCaesarCipher, analyzeArray } from "./index.js";
 
 test('capitalizes first letter of word',  () => {
   expect(capitalize('function')).toMatch('Function');
@@ -29,7 +29,11 @@ test('divides 30 / 5 to equal 6', () => {
 });
 
 test('returns string using Caesar Shift Cipher with a sting input of "Hello, World!" and shift int input of 3 & returns "Khoor, Zruog!"', () => { 
-  expect (caesarCipher('Hello, World!', 3)).toMatch('Khoor, Zruog!');
+  expect (encryptCaesarCipher('Hello, World!', 3)).toMatch('Khoor, Zruog!');
+});
+
+test('returns string using Caesar Shift Cipher result of "Khoor, Zruog!" and returns "Hello, World!"', () => { 
+  expect (decryptCaesarCipher('Khoor, Zruog!', 3)).toMatch('Hello, World!');
 });
 
 test('returns [1,8,3,4,2,6] with min, max, average, and lenth of array', () => {

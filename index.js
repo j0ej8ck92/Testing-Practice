@@ -38,7 +38,7 @@ export const calc = {
 //A caesarCipher function that takes a string and a shift factor and returns it with each character “shifted”. 
 //For example, a = d, b = e, etc... 
 //Make sure the output is case sensitive along with punctuation as well.
-export function caesarCipher(str, shift){
+export function encryptCaesarCipher(str, shift){
   return str.split('').map(char => {
     const ASCII_dec = char.charCodeAt(0)
 
@@ -52,6 +52,23 @@ export function caesarCipher(str, shift){
     }
     return char;
   }).join('');
+}
+
+export function decryptCaesarCipher(str, shift){
+    return str.split('').map(char => {
+    const ASCII_dec = char.charCodeAt(0)
+
+    if (ASCII_dec > 96 && ASCII_dec < 123 ){
+      const result = ((ASCII_dec - 97 - shift) % 26) + 97;
+      return String.fromCharCode(result);
+    }
+    if (ASCII_dec > 64 && ASCII_dec < 91 ){
+      const result = ((ASCII_dec - 97 - shift) % 26) + 97;
+      return String.fromCharCode(result);
+    }
+    return char;
+  }).join('');
+
 }
 
 //An analyzeArray function that takes an array of numbers and returns an object 
